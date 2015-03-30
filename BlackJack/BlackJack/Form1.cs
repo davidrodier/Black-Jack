@@ -346,7 +346,7 @@ namespace BlackJack
             Application.Exit();
         }
 
-        public float CompterCartesPourMoyenne()
+        public float CompterCartesPourMoyenne(Joueur AI, int Place)
         {
             int NbCartes = PaquetCartes.Count();
             int TotalPTS = 0;      
@@ -355,9 +355,9 @@ namespace BlackJack
             // Faire le total des cartes 
             for (int compteur = 0; compteur < PaquetCartes.Count(); compteur++)
             {
-                ValeurCarte = GetNumCarte(PaquetCartes[compteur]);
+                ValeurCarte = GetNumCarteAI(AI, Place, PaquetCartes[compteur]);
 
-                if (GetNumCarte(PaquetCartes[compteur]) > 10)
+                if (GetNumCarteAI(AI, Place, PaquetCartes[compteur]) > 10)
                 {
                     ValeurCarte = 10;
                 }
@@ -389,13 +389,11 @@ namespace BlackJack
 
             if (Place == 0) // Haut
             {
-                Score = Convert.ToInt32(TBX_Score_J1.Text.ToString()) + ValeurCarte;
-                TBX_Score_J1.Text = (Score).ToString();
+                Score = Convert.ToInt32(TBX_Score_J1.Text.ToString());
             }
             else // Place == bas
             {
-                Score = Convert.ToInt32(TBX_Score_J2.Text.ToString()) + ValeurCarte;
-                TBX_Score_J2.Text = (Score).ToString();
+                Score = Convert.ToInt32(TBX_Score_J2.Text.ToString());
             }
 
             if (Score < 10)
@@ -409,7 +407,7 @@ namespace BlackJack
                 {
                     if (AI.GetDifficulte() == 0)    // 50%, prend beaucoup de risque
                     {
-                        if (Score + CompterCartesPourMoyenne() > (21 - 5))
+                        if (Score + CompterCartesPourMoyenne( AI,  Place) > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
                         }
@@ -421,7 +419,7 @@ namespace BlackJack
                     }
                     else if (AI.GetDifficulte() == 1) // 65%, moyen
                     {
-                        if (Score + CompterCartesPourMoyenne() > (21 - 6.5))
+                        if (Score + CompterCartesPourMoyenne( AI,  Place)*2*0.65 > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
                         }
@@ -432,7 +430,7 @@ namespace BlackJack
                     }
                     else if (AI.GetDifficulte() == 2)   // 80%, précautionneux
                     {
-                        if (Score + CompterCartesPourMoyenne() > (21 - 8))
+                        if (Score + CompterCartesPourMoyenne(AI, Place)*2*0.8 > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
                         }
@@ -463,7 +461,7 @@ namespace BlackJack
                     }
                     else if (AI.GetDifficulte() == 1) // 65%, moyen
                     {
-                        if (Score + 5 > (21 - 6.5))
+                        if (Score + 5*2*0.65 > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
                         }
@@ -474,7 +472,7 @@ namespace BlackJack
                     }
                     else if (AI.GetDifficulte() == 2)   // 80%, précautionneux
                     {
-                        if (Score + 5 > (21 - 8))
+                        if (Score + 5*2*0.8 > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
                         }
@@ -490,6 +488,18 @@ namespace BlackJack
                     }
                 }
 
+            }
+
+            // UPDATE SCORES
+            if (Place == 0) // Haut
+            {
+                Score = Convert.ToInt32(TBX_Score_J1.Text.ToString()) + ValeurCarte;
+                TBX_Score_J1.Text = (Score).ToString();
+            }
+            else // Place == bas
+            {
+                Score = Convert.ToInt32(TBX_Score_J2.Text.ToString()) + ValeurCarte;
+                TBX_Score_J2.Text = (Score).ToString();
             }
 
         }
