@@ -164,6 +164,7 @@
             this.BTN_Commencer.TabIndex = 10;
             this.BTN_Commencer.Text = "Commencer la partie";
             this.BTN_Commencer.UseVisualStyleBackColor = true;
+            this.BTN_Commencer.Click += new System.EventHandler(this.BTN_Commencer_Click);
             // 
             // NouvellePartie
             // 

@@ -128,5 +128,10 @@ namespace BlackJack
             Compte2 = CB_2Compte.Checked;
             CheckCommencerPossible();
         }
+
+        private void BTN_Commencer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

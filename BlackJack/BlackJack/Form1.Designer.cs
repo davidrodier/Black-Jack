@@ -43,7 +43,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.jeuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nouvellePartieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.arretToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.àProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GBX_JoueurDeux = new System.Windows.Forms.GroupBox();
             this.TBX_Score_J2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,8 +60,10 @@
             this.PB_J2_C1 = new System.Windows.Forms.PictureBox();
             this.RTB_Ai1 = new System.Windows.Forms.RichTextBox();
             this.RTB_Ai2 = new System.Windows.Forms.RichTextBox();
-            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.àProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PB_J1_C7 = new System.Windows.Forms.PictureBox();
+            this.PB_J1_C8 = new System.Windows.Forms.PictureBox();
+            this.PB_J2_C7 = new System.Windows.Forms.PictureBox();
+            this.PB_J2_C8 = new System.Windows.Forms.PictureBox();
             this.GBX_JoueurUn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C5)).BeginInit();
@@ -74,10 +79,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C8)).BeginInit();
             this.SuspendLayout();
             // 
             // GBX_JoueurUn
             // 
+            this.GBX_JoueurUn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GBX_JoueurUn.Controls.Add(this.PB_J1_C8);
+            this.GBX_JoueurUn.Controls.Add(this.PB_J1_C7);
             this.GBX_JoueurUn.Controls.Add(this.TBX_Score_J1);
             this.GBX_JoueurUn.Controls.Add(this.label1);
             this.GBX_JoueurUn.Controls.Add(this.BTN_J1_Piger);
@@ -90,7 +103,7 @@
             this.GBX_JoueurUn.Controls.Add(this.PB_J1_C3);
             this.GBX_JoueurUn.Location = new System.Drawing.Point(12, 28);
             this.GBX_JoueurUn.Name = "GBX_JoueurUn";
-            this.GBX_JoueurUn.Size = new System.Drawing.Size(425, 200);
+            this.GBX_JoueurUn.Size = new System.Drawing.Size(567, 200);
             this.GBX_JoueurUn.TabIndex = 0;
             this.GBX_JoueurUn.TabStop = false;
             this.GBX_JoueurUn.Text = "Joueur 1";
@@ -123,6 +136,7 @@
             this.BTN_J1_Piger.TabIndex = 13;
             this.BTN_J1_Piger.Text = "Piger";
             this.BTN_J1_Piger.UseVisualStyleBackColor = true;
+            this.BTN_J1_Piger.Click += new System.EventHandler(this.BTN_J1_Piger_Click);
             // 
             // BTN_J1_Skip
             // 
@@ -209,7 +223,7 @@
             this.infoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(751, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(893, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -217,6 +231,7 @@
             // 
             this.jeuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nouvellePartieToolStripMenuItem,
+            this.arretToolStripMenuItem,
             this.quitterToolStripMenuItem});
             this.jeuToolStripMenuItem.Name = "jeuToolStripMenuItem";
             this.jeuToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
@@ -230,16 +245,44 @@
             this.nouvellePartieToolStripMenuItem.Text = "Nouvelle Partie";
             this.nouvellePartieToolStripMenuItem.Click += new System.EventHandler(this.nouvellePartieToolStripMenuItem_Click);
             // 
+            // arretToolStripMenuItem
+            // 
+            this.arretToolStripMenuItem.Name = "arretToolStripMenuItem";
+            this.arretToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F2)));
+            this.arretToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.arretToolStripMenuItem.Text = "Stopper Partie";
+            this.arretToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
+            // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
             this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.quitterToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.quitterToolStripMenuItem.Text = "Quitter";
-            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.sToolStripMenuItem_Click);
+            // 
+            // infoToolStripMenuItem
+            // 
+            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.àProposToolStripMenuItem});
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.infoToolStripMenuItem.Text = "Info";
+            // 
+            // àProposToolStripMenuItem
+            // 
+            this.àProposToolStripMenuItem.Name = "àProposToolStripMenuItem";
+            this.àProposToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.àProposToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.àProposToolStripMenuItem.Text = "À propos";
+            this.àProposToolStripMenuItem.Click += new System.EventHandler(this.àProposToolStripMenuItem_Click);
             // 
             // GBX_JoueurDeux
             // 
+            this.GBX_JoueurDeux.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GBX_JoueurDeux.Controls.Add(this.PB_J2_C8);
+            this.GBX_JoueurDeux.Controls.Add(this.PB_J2_C7);
             this.GBX_JoueurDeux.Controls.Add(this.TBX_Score_J2);
             this.GBX_JoueurDeux.Controls.Add(this.label2);
             this.GBX_JoueurDeux.Controls.Add(this.BTN_J2_Piger);
@@ -252,7 +295,7 @@
             this.GBX_JoueurDeux.Controls.Add(this.PB_J2_C1);
             this.GBX_JoueurDeux.Location = new System.Drawing.Point(12, 250);
             this.GBX_JoueurDeux.Name = "GBX_JoueurDeux";
-            this.GBX_JoueurDeux.Size = new System.Drawing.Size(425, 200);
+            this.GBX_JoueurDeux.Size = new System.Drawing.Size(567, 200);
             this.GBX_JoueurDeux.TabIndex = 2;
             this.GBX_JoueurDeux.TabStop = false;
             this.GBX_JoueurDeux.Text = "Joueur 2";
@@ -285,6 +328,7 @@
             this.BTN_J2_Piger.TabIndex = 15;
             this.BTN_J2_Piger.Text = "Piger";
             this.BTN_J2_Piger.UseVisualStyleBackColor = true;
+            this.BTN_J2_Piger.Click += new System.EventHandler(this.BTN_J2_Piger_Click);
             // 
             // BTN_J2_Skip
             // 
@@ -365,10 +409,11 @@
             // 
             // RTB_Ai1
             // 
+            this.RTB_Ai1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RTB_Ai1.BackColor = System.Drawing.SystemColors.InfoText;
             this.RTB_Ai1.Font = new System.Drawing.Font("Copperplate Gothic Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTB_Ai1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.RTB_Ai1.Location = new System.Drawing.Point(443, 33);
+            this.RTB_Ai1.Location = new System.Drawing.Point(585, 33);
             this.RTB_Ai1.Name = "RTB_Ai1";
             this.RTB_Ai1.ReadOnly = true;
             this.RTB_Ai1.Size = new System.Drawing.Size(296, 195);
@@ -377,44 +422,77 @@
             // 
             // RTB_Ai2
             // 
+            this.RTB_Ai2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RTB_Ai2.BackColor = System.Drawing.SystemColors.InfoText;
             this.RTB_Ai2.Font = new System.Drawing.Font("Copperplate Gothic Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RTB_Ai2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.RTB_Ai2.Location = new System.Drawing.Point(443, 255);
+            this.RTB_Ai2.Location = new System.Drawing.Point(585, 255);
             this.RTB_Ai2.Name = "RTB_Ai2";
             this.RTB_Ai2.ReadOnly = true;
             this.RTB_Ai2.Size = new System.Drawing.Size(296, 195);
             this.RTB_Ai2.TabIndex = 4;
             this.RTB_Ai2.Text = ">Test de la console";
             // 
-            // infoToolStripMenuItem
+            // PB_J1_C7
             // 
-            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.àProposToolStripMenuItem});
-            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.infoToolStripMenuItem.Text = "Info";
+            this.PB_J1_C7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C7.BackgroundImage")));
+            this.PB_J1_C7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PB_J1_C7.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C7.InitialImage")));
+            this.PB_J1_C7.Location = new System.Drawing.Point(420, 74);
+            this.PB_J1_C7.Name = "PB_J1_C7";
+            this.PB_J1_C7.Size = new System.Drawing.Size(63, 91);
+            this.PB_J1_C7.TabIndex = 18;
+            this.PB_J1_C7.TabStop = false;
             // 
-            // àProposToolStripMenuItem
+            // PB_J1_C8
             // 
-            this.àProposToolStripMenuItem.Name = "àProposToolStripMenuItem";
-            this.àProposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.àProposToolStripMenuItem.Text = "À propos";
-            this.àProposToolStripMenuItem.Click += new System.EventHandler(this.àProposToolStripMenuItem_Click);
+            this.PB_J1_C8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C8.BackgroundImage")));
+            this.PB_J1_C8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PB_J1_C8.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C8.InitialImage")));
+            this.PB_J1_C8.Location = new System.Drawing.Point(489, 74);
+            this.PB_J1_C8.Name = "PB_J1_C8";
+            this.PB_J1_C8.Size = new System.Drawing.Size(63, 91);
+            this.PB_J1_C8.TabIndex = 19;
+            this.PB_J1_C8.TabStop = false;
+            // 
+            // PB_J2_C7
+            // 
+            this.PB_J2_C7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C7.BackgroundImage")));
+            this.PB_J2_C7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PB_J2_C7.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C7.InitialImage")));
+            this.PB_J2_C7.Location = new System.Drawing.Point(420, 73);
+            this.PB_J2_C7.Name = "PB_J2_C7";
+            this.PB_J2_C7.Size = new System.Drawing.Size(63, 91);
+            this.PB_J2_C7.TabIndex = 17;
+            this.PB_J2_C7.TabStop = false;
+            // 
+            // PB_J2_C8
+            // 
+            this.PB_J2_C8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C8.BackgroundImage")));
+            this.PB_J2_C8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PB_J2_C8.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C8.InitialImage")));
+            this.PB_J2_C8.Location = new System.Drawing.Point(489, 73);
+            this.PB_J2_C8.Name = "PB_J2_C8";
+            this.PB_J2_C8.Size = new System.Drawing.Size(63, 91);
+            this.PB_J2_C8.TabIndex = 18;
+            this.PB_J2_C8.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(751, 462);
+            this.ClientSize = new System.Drawing.Size(893, 462);
             this.Controls.Add(this.RTB_Ai2);
             this.Controls.Add(this.RTB_Ai1);
             this.Controls.Add(this.GBX_JoueurDeux);
             this.Controls.Add(this.GBX_JoueurUn);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(909, 500);
             this.Name = "Form1";
             this.Text = "BlackJack";
             this.GBX_JoueurUn.ResumeLayout(false);
@@ -435,6 +513,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,9 +551,14 @@
       private System.Windows.Forms.RichTextBox RTB_Ai2;
       private System.Windows.Forms.ToolStripMenuItem jeuToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem nouvellePartieToolStripMenuItem;
-      private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem arretToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem àProposToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
+      private System.Windows.Forms.PictureBox PB_J1_C8;
+      private System.Windows.Forms.PictureBox PB_J1_C7;
+      private System.Windows.Forms.PictureBox PB_J2_C8;
+      private System.Windows.Forms.PictureBox PB_J2_C7;
    }
 }
 
