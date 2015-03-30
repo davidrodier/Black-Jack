@@ -377,6 +377,12 @@ namespace BlackJack
                 // En embarque des les calculs statistiques
                 
                 // IMPLÉMENTER AI
+                // IMPLÉMENTER AI
+                // IMPLÉMENTER AI
+
+                // ELLE DOIT FAIRE UN CALCULE DE PROBABILITÉS ICI
+                // D'APRÈS SON NIVEAU DE RISQUE ET LES CHANCES QU'ELLE A DE PAS DÉPASSER 21
+                // IL FAUT AUSSI IMPLÉMENTER LA COMPTAGE DANS CE CALCUL DE PROBABILITÉS
 
             }
 
