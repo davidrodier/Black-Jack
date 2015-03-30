@@ -50,10 +50,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="NouvellePartie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NouvellePartie.Designer.cs">
+      <DependentUpon>NouvellePartie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NouvellePartie.resx">
+      <DependentUpon>NouvellePartie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -63,6 +72,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -76,6 +86,165 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Carreau_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Coeur_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Dos.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Pique_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Skin1\Trefle_13.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
