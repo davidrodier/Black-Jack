@@ -27,7 +27,17 @@ namespace BlackJack
                 Difficulte_ = Difficulte;
                 Compte_ = Compte;
             }
+            public int GetDifficulte()
+            { 
+                // Est-ce qu'il prend beaucoup de risque?  0 > 2
+                return Difficulte_;
+            }
 
+            public bool CompteTu()
+            {
+                // Est-ce qu'il compte???
+                return Compte_;
+            }
             public void Passer()
             {
                 Finit_ = true;
@@ -336,6 +346,28 @@ namespace BlackJack
             Application.Exit();
         }
 
+        public float CompterCartesPourMoyenne()
+        {
+            int NbCartes = PaquetCartes.Count();
+            int TotalPTS = 0;      
+            int ValeurCarte = -5000;    // Un chiffre random. Si jamais y'a un erreur, elle sera plus facile à détecter.     
+
+            // Faire le total des cartes 
+            for (int compteur = 0; compteur < PaquetCartes.Count(); compteur++)
+            {
+                ValeurCarte = GetNumCarte(PaquetCartes[compteur]);
+
+                if (GetNumCarte(PaquetCartes[compteur]) > 10)
+                {
+                    ValeurCarte = 10;
+                }
+
+                TotalPTS = TotalPTS + ValeurCarte;
+            }
+
+            return (float)TotalPTS / (float)NbCartes;
+        }
+
         // Pour les IA
         private void JouerUnTour(Joueur AI, int Place)  // La placer c'est s'il est en haut ou en bas ( 0 ou 1 ).
         {
@@ -368,21 +400,95 @@ namespace BlackJack
 
             if (Score < 10)
             {
-
-
                 MettreCarte(AI, Place, Pige);
             }
             else
             { 
-                // En embarque des les calculs statistiques
-                
-                // IMPLÉMENTER AI
-                // IMPLÉMENTER AI
-                // IMPLÉMENTER AI
+                // On embarque des les calculs statistiques
+                if (AI.CompteTu() == true)
+                {
+                    if (AI.GetDifficulte() == 0)    // 50%, prend beaucoup de risque
+                    {
+                        if (Score + CompterCartesPourMoyenne() > (21 - 5))
+                        {
+                            AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                        }
+                        else
+                        {
+                            MettreCarte(AI, Place, Pige);
+                        }
 
-                // ELLE DOIT FAIRE UN CALCULE DE PROBABILITÉS ICI
-                // D'APRÈS SON NIVEAU DE RISQUE ET LES CHANCES QU'ELLE A DE PAS DÉPASSER 21
-                // IL FAUT AUSSI IMPLÉMENTER LA COMPTAGE DANS CE CALCUL DE PROBABILITÉS
+                    }
+                    else if (AI.GetDifficulte() == 1) // 65%, moyen
+                    {
+                        if (Score + CompterCartesPourMoyenne() > (21 - 6.5))
+                        {
+                            AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                        }
+                        else
+                        {
+                            MettreCarte(AI, Place, Pige);
+                        }
+                    }
+                    else if (AI.GetDifficulte() == 2)   // 80%, précautionneux
+                    {
+                        if (Score + CompterCartesPourMoyenne() > (21 - 8))
+                        {
+                            AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                        }
+                        else
+                        {
+                            MettreCarte(AI, Place, Pige);
+                        }
+                    }
+                    else
+                    { 
+                        // Check pour erreur
+                        MessageBox.Show("Difficulté/risque invalide dans l'IA qui compte. ");
+                    }
+
+                }
+                else // Cet AI ne compte pas
+                {
+                    if (AI.GetDifficulte() == 0)    // 50%, prend beaucoup de risque
+                    {
+                        if (Score + 5 > (21 - 5))
+                        {
+                            AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                        }
+                        else
+                        {
+                            MettreCarte(AI, Place, Pige);
+                        }
+                    }
+                    else if (AI.GetDifficulte() == 1) // 65%, moyen
+                    {
+                        if (Score + 5 > (21 - 6.5))
+                        {
+                            AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                        }
+                        else
+                        {
+                            MettreCarte(AI, Place, Pige);
+                        }
+                    }
+                    else if (AI.GetDifficulte() == 2)   // 80%, précautionneux
+                    {
+                        if (Score + 5 > (21 - 8))
+                        {
+                            AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                        }
+                        else
+                        {
+                            MettreCarte(AI, Place, Pige);
+                        }
+                    }
+                    else
+                    {
+                        // Check pour erreur
+                        MessageBox.Show("Difficulté/risque invalide dans l'IA qui ne compte pas. ");
+                    }
+                }
 
             }
 
@@ -423,6 +529,7 @@ namespace BlackJack
 
         }
 
+        // Ça place la carte dans l'GUI
         private void MettreCarte(Joueur AI, int Place, string Carte)
         {
             AI.Jouer();
