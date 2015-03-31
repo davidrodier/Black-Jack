@@ -17,7 +17,7 @@ namespace BlackJack
         {
             bool AI_ = false;    // Si c'Est un AI
             int Difficulte_ = 0; // 0: 50%, 1: 65%, 2: 80%. Ça représente le risque. 
-            bool Finit_ = false; // True si le joueur a passé
+            public bool Finit_ = false; // True si le joueur a passé
             bool Compte_ = false;
             int Nombre_ = 0;
 
@@ -41,6 +41,7 @@ namespace BlackJack
             public void Passer()
             {
                 Finit_ = true;
+
             }
 
             public bool CheckPasser()
@@ -67,6 +68,8 @@ namespace BlackJack
         const int NOMBREDECATES = 52;
         public bool OnJoue = false;
         int TypePartie = -1;
+        public bool J1_Skip = false;
+        public bool J2_Skip = false;
 
         List<string> PaquetCartes = new List<string>();
 
@@ -207,6 +210,7 @@ namespace BlackJack
 
         private void nouvellePartieToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Reset();
             NouvellePartie FormNP = new NouvellePartie();
 
             if (FormNP.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -311,9 +315,10 @@ namespace BlackJack
 
                 TypePartie = FormNP.Joueurs;
                 OnJoue = true;
+
+                GBX_JoueurDeux.Enabled = false;
             }
         }
-
 
         private void àProposToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -337,7 +342,11 @@ namespace BlackJack
 
         private void BTN_J1_Skip_Click(object sender, EventArgs e)
         {
-
+            J1_Skip = true;
+            LBL_J1.Text = "Passed";
+            GBX_JoueurUn.Enabled = false;
+            if (LBL_J2.Text == "")
+                GBX_JoueurDeux.Enabled = true;
         }
 
         private void sToolStripMenuItem_Click(object sender, EventArgs e)
@@ -362,6 +371,15 @@ namespace BlackJack
                     ValeurCarte = 10;
                 }
 
+                //if (Place == 0)
+                //{
+                //    RTB_Ai1.Text += "/n>Moyenne des cartes restantent : " + ValeurCarte.ToString();
+                //    RTB_Ai1.Text += "/n>Score du joueur : " + TotalPTS.ToString();
+                //} else if (Place == 1)
+                //{
+                //    RTB_Ai2.Text += "/n>Moyenne des cartes restantent : " + ValeurCarte.ToString();
+                //    RTB_Ai2.Text += "/n>Score du joueur : " + TotalPTS.ToString();
+                //}
                 TotalPTS = TotalPTS + ValeurCarte;
             }
 
@@ -374,16 +392,6 @@ namespace BlackJack
             // On accède à la première carte
             string Pige = PaquetCartes[0];
             PaquetCartes.RemoveAt(0);
-
-            //int ValeurCarte = GetNumCarte(Pige);
-            int ValeurCarte = GetNumCarteAI(AI, Place, Pige);
-            string TypeCarte = GetNomCarte(Pige);
-
-            // Les cartes plus grandes que 10 valent 10
-            if (ValeurCarte > 10)
-            {
-                ValeurCarte = 10;
-            }
 
             int Score = 0;
 
@@ -399,6 +407,14 @@ namespace BlackJack
             if (Score < 10)
             {
                 MettreCarte(AI, Place, Pige);
+                if (Place == 0)
+                {
+                    RTB_Ai1.Text += "\n> Joue son tour puisque son score est plus bas que 10";
+                }
+                else if (Place == 1)
+                {
+                    RTB_Ai2.Text += "\n> Joue son tour puisque son score est plus bas que 10";
+                }
             }
             else
             { 
@@ -410,10 +426,30 @@ namespace BlackJack
                         if (Score + CompterCartesPourMoyenne( AI,  Place) > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                            if(Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n> Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                                GBX_JoueurUn.Enabled = false;
+                                LBL_J1.Text = "Passed";
+                            }
+                            else if(Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                                GBX_JoueurDeux.Enabled = false;
+                                LBL_J2.Text = "Passed";
+                            }
                         }
                         else
                         {
                             MettreCarte(AI, Place, Pige);
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
                         }
 
                     }
@@ -422,10 +458,30 @@ namespace BlackJack
                         if (Score + CompterCartesPourMoyenne( AI,  Place)*2*0.65 > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n >Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 10).ToString();
+                                GBX_JoueurUn.Enabled = false;
+                                LBL_J1.Text = "Passed";
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 2 * 0.65).ToString();
+                                GBX_JoueurDeux.Enabled = false;
+                                LBL_J2.Text = "Passed";
+                            }
                         }
                         else
                         {
                             MettreCarte(AI, Place, Pige);
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
                         }
                     }
                     else if (AI.GetDifficulte() == 2)   // 80%, précautionneux
@@ -433,10 +489,30 @@ namespace BlackJack
                         if (Score + CompterCartesPourMoyenne(AI, Place)*2*0.8 > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n >Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 10).ToString();
+                                GBX_JoueurUn.Enabled = false;
+                                LBL_J1.Text = "Passed";
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 2 * 0.65).ToString();
+                                GBX_JoueurDeux.Enabled = false;
+                                LBL_J2.Text = "Passed";
+                            }
                         }
                         else
                         {
                             MettreCarte(AI, Place, Pige);
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
                         }
                     }
                     else
@@ -453,10 +529,30 @@ namespace BlackJack
                         if (Score + 5 > (21 - 5))
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n >Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 10).ToString();
+                                GBX_JoueurUn.Enabled = false;
+                                LBL_J1.Text = "Passed";
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 2 * 0.65).ToString();
+                                GBX_JoueurDeux.Enabled = false;
+                                LBL_J2.Text = "Passed";
+                            }
                         }
                         else
                         {
                             MettreCarte(AI, Place, Pige);
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
                         }
                     }
                     else if (AI.GetDifficulte() == 1) // 65%, moyen
@@ -464,10 +560,30 @@ namespace BlackJack
                         if (Score + 5*2*0.65 > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n >Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 10).ToString();
+                                GBX_JoueurUn.Enabled = false;
+                                LBL_J1.Text = "Passed";
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 2 * 0.65).ToString();
+                                GBX_JoueurDeux.Enabled = false;
+                                LBL_J2.Text = "Passed";
+                            }
                         }
                         else
                         {
                             MettreCarte(AI, Place, Pige);
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
                         }
                     }
                     else if (AI.GetDifficulte() == 2)   // 80%, précautionneux
@@ -475,10 +591,30 @@ namespace BlackJack
                         if (Score + 5*2*0.8 > 21)
                         {
                             AI.Passer();    // On arrête de jouer. Ça vaut pus la peine car on va dépasser 21. 
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n >Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 10).ToString();
+                                GBX_JoueurUn.Enabled = false;
+                                LBL_J1.Text = "Passed";
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Passe son tour puisque les probabilitées sont trop grande d'obtenir : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place) * 2 * 0.65).ToString();
+                                GBX_JoueurDeux.Enabled = false;
+                                LBL_J2.Text = "Passed";
+                            }
                         }
                         else
                         {
                             MettreCarte(AI, Place, Pige);
+                            if (Place == 0)
+                            {
+                                RTB_Ai1.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
+                            else if (Place == 1)
+                            {
+                                RTB_Ai2.Text += "\n> Joue son tour puisque les probabilitées disent que le score aurait le plus de chance d'être : " + Convert.ToInt32(Score + CompterCartesPourMoyenne(AI, Place)).ToString();
+                            }
                         }
                     }
                     else
@@ -490,18 +626,30 @@ namespace BlackJack
 
             }
 
-            // UPDATE SCORES
-            if (Place == 0) // Haut
+            if (!AI.Finit_)
             {
-                Score = Convert.ToInt32(TBX_Score_J1.Text.ToString()) + ValeurCarte;
-                TBX_Score_J1.Text = (Score).ToString();
-            }
-            else // Place == bas
-            {
-                Score = Convert.ToInt32(TBX_Score_J2.Text.ToString()) + ValeurCarte;
-                TBX_Score_J2.Text = (Score).ToString();
-            }
+                //int ValeurCarte = GetNumCarte(Pige);
+                int ValeurCarte = GetNumCarteAI(AI, Place, Pige);
+                string TypeCarte = GetNomCarte(Pige);
 
+                // Les cartes plus grandes que 10 valent 10
+                if (ValeurCarte > 10)
+                {
+                    ValeurCarte = 10;
+                }
+
+                // UPDATE SCORES
+                if (Place == 0) // Haut
+                {
+                    Score = Convert.ToInt32(TBX_Score_J1.Text.ToString()) + ValeurCarte;
+                    TBX_Score_J1.Text = (Score).ToString();
+                }
+                else // Place == bas
+                {
+                    Score = Convert.ToInt32(TBX_Score_J2.Text.ToString()) + ValeurCarte;
+                    TBX_Score_J2.Text = (Score).ToString();
+                }
+            }
         }
 
         // POur les joueurs humains
@@ -785,6 +933,11 @@ namespace BlackJack
                     MessageBox.Show("Oups. Mauvais type de partie dans 'BTN_J1_Piger_Click()'.");
                 }
 
+                if (LBL_J2.Text == "")
+                {
+                    GBX_JoueurDeux.Enabled = true;
+                    GBX_JoueurUn.Enabled = false;
+                }
             }
         }
 
@@ -813,10 +966,15 @@ namespace BlackJack
                     MessageBox.Show("Oups. Mauvais type de partie dans 'BTN_J2_Piger_Click()'.");
                 }
 
+                if (LBL_J1.Text == "")
+                {
+                    GBX_JoueurUn.Enabled = true;
+                    GBX_JoueurDeux.Enabled = false;
+                }
             }
         }
 
-        private void Reset()
+        public  void Reset()
         {
             PB_J1_C1.BackgroundImage = GetCarteImage("Dos");
             PB_J1_C2.BackgroundImage = GetCarteImage("Dos");
@@ -836,19 +994,94 @@ namespace BlackJack
             PB_J2_C7.BackgroundImage = GetCarteImage("Dos");
             PB_J2_C8.BackgroundImage = GetCarteImage("Dos");
 
-            BTN_J1_Skip.Enabled = false;
-            BTN_J1_Piger.Enabled = false;
             TBX_Score_J1.Text = "0";
+            J1_Skip = false;
 
-            BTN_J2_Skip.Enabled = false;
-            BTN_J2_Piger.Enabled = false;
             TBX_Score_J2.Text = "0";
+            J2_Skip = false;
+
+            LBL_J1.Text = "";
+            LBL_J2.Text = "";
 
             OnJoue = false;
             TypePartie = -1;
 
+            GBX_JoueurUn.Enabled = true;
+            GBX_JoueurDeux.Enabled = false;
+
             PaquetCartes.Clear();
             GenererPaquet();
         }
+
+        private void BTN_J2_Skip_Click(object sender, EventArgs e)
+        {
+            J2_Skip = true;
+            LBL_J2.Text = "Passed";
+            GBX_JoueurDeux.Enabled = false;
+            if(LBL_J1.Text == "")
+                GBX_JoueurUn.Enabled = true;
+        }
+
+        private void TBX_Score_J1_TextChanged(object sender, EventArgs e)
+        {
+            if(TBX_Score_J1.Text == "21")
+            {
+                LBL_J1.Text = "BlackJack !!!";
+            } else if(Convert.ToInt32(TBX_Score_J1.Text) > 21)
+            {
+                LBL_J1.Text = "Over";
+            }
+        }
+
+        private void TBX_Score_J2_TextChanged(object sender, EventArgs e)
+        {
+            if (TBX_Score_J2.Text == "21")
+            {
+                LBL_J2.Text = "BlackJack !!!";
+            } else if (Convert.ToInt32(TBX_Score_J2.Text) > 21)
+            {
+                LBL_J2.Text = "Over";
+            }
+        }
+
+        private void GBX_JoueurUn_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LBL_J1_TextChanged(object sender, EventArgs e)
+        {
+            GBX_JoueurUn.Enabled = false;
+            if(LBL_J2.Text != "" && OnJoue)
+            {
+                Victory();
+            }
+        }
+
+        private void LBL_J2_TextChanged(object sender, EventArgs e)
+        {
+            GBX_JoueurDeux.Enabled = false;
+            if(LBL_J1.Text != "" && OnJoue)
+            {
+                Victory();
+            }
+        }
+
+        private void Victory()
+        {
+            if ((Convert.ToInt32(TBX_Score_J1.Text) > Convert.ToInt32(TBX_Score_J2.Text) && Convert.ToInt32(TBX_Score_J1.Text) <= 21) || Convert.ToInt32(TBX_Score_J2.Text) > 21)
+            {
+                MessageBox.Show("Joueur 1 gagne la partie");
+            }
+            else if ((Convert.ToInt32(TBX_Score_J1.Text) < Convert.ToInt32(TBX_Score_J2.Text) && Convert.ToInt32(TBX_Score_J2.Text) <= 21) || Convert.ToInt32(TBX_Score_J1.Text) > 21)
+            {
+                MessageBox.Show("Joueur 2 gagne la partie");
+            } else
+            {
+                MessageBox.Show("Aucun gagnant");
+            }
+
+            OnJoue = false;
+         }
     }
 }

@@ -30,6 +30,8 @@
       {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.GBX_JoueurUn = new System.Windows.Forms.GroupBox();
+            this.PB_J1_C8 = new System.Windows.Forms.PictureBox();
+            this.PB_J1_C7 = new System.Windows.Forms.PictureBox();
             this.TBX_Score_J1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BTN_J1_Piger = new System.Windows.Forms.Button();
@@ -48,6 +50,8 @@
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.àProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GBX_JoueurDeux = new System.Windows.Forms.GroupBox();
+            this.PB_J2_C8 = new System.Windows.Forms.PictureBox();
+            this.PB_J2_C7 = new System.Windows.Forms.PictureBox();
             this.TBX_Score_J2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.BTN_J2_Piger = new System.Windows.Forms.Button();
@@ -60,11 +64,11 @@
             this.PB_J2_C1 = new System.Windows.Forms.PictureBox();
             this.RTB_Ai1 = new System.Windows.Forms.RichTextBox();
             this.RTB_Ai2 = new System.Windows.Forms.RichTextBox();
-            this.PB_J1_C7 = new System.Windows.Forms.PictureBox();
-            this.PB_J1_C8 = new System.Windows.Forms.PictureBox();
-            this.PB_J2_C7 = new System.Windows.Forms.PictureBox();
-            this.PB_J2_C8 = new System.Windows.Forms.PictureBox();
+            this.LBL_J1 = new System.Windows.Forms.Label();
+            this.LBL_J2 = new System.Windows.Forms.Label();
             this.GBX_JoueurUn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C1)).BeginInit();
@@ -73,22 +77,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C3)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.GBX_JoueurDeux.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C8)).BeginInit();
             this.SuspendLayout();
             // 
             // GBX_JoueurUn
             // 
             this.GBX_JoueurUn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GBX_JoueurUn.Controls.Add(this.LBL_J1);
             this.GBX_JoueurUn.Controls.Add(this.PB_J1_C8);
             this.GBX_JoueurUn.Controls.Add(this.PB_J1_C7);
             this.GBX_JoueurUn.Controls.Add(this.TBX_Score_J1);
@@ -107,6 +110,29 @@
             this.GBX_JoueurUn.TabIndex = 0;
             this.GBX_JoueurUn.TabStop = false;
             this.GBX_JoueurUn.Text = "Joueur 1";
+            this.GBX_JoueurUn.Enter += new System.EventHandler(this.GBX_JoueurUn_Enter);
+            // 
+            // PB_J1_C8
+            // 
+            this.PB_J1_C8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C8.BackgroundImage")));
+            this.PB_J1_C8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PB_J1_C8.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C8.InitialImage")));
+            this.PB_J1_C8.Location = new System.Drawing.Point(489, 74);
+            this.PB_J1_C8.Name = "PB_J1_C8";
+            this.PB_J1_C8.Size = new System.Drawing.Size(63, 91);
+            this.PB_J1_C8.TabIndex = 19;
+            this.PB_J1_C8.TabStop = false;
+            // 
+            // PB_J1_C7
+            // 
+            this.PB_J1_C7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C7.BackgroundImage")));
+            this.PB_J1_C7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PB_J1_C7.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C7.InitialImage")));
+            this.PB_J1_C7.Location = new System.Drawing.Point(420, 74);
+            this.PB_J1_C7.Name = "PB_J1_C7";
+            this.PB_J1_C7.Size = new System.Drawing.Size(63, 91);
+            this.PB_J1_C7.TabIndex = 18;
+            this.PB_J1_C7.TabStop = false;
             // 
             // TBX_Score_J1
             // 
@@ -116,6 +142,7 @@
             this.TBX_Score_J1.Size = new System.Drawing.Size(100, 20);
             this.TBX_Score_J1.TabIndex = 17;
             this.TBX_Score_J1.Text = "0";
+            this.TBX_Score_J1.TextChanged += new System.EventHandler(this.TBX_Score_J1_TextChanged);
             // 
             // label1
             // 
@@ -273,7 +300,7 @@
             // 
             this.àProposToolStripMenuItem.Name = "àProposToolStripMenuItem";
             this.àProposToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.àProposToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.àProposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.àProposToolStripMenuItem.Text = "À propos";
             this.àProposToolStripMenuItem.Click += new System.EventHandler(this.àProposToolStripMenuItem_Click);
             // 
@@ -281,6 +308,7 @@
             // 
             this.GBX_JoueurDeux.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GBX_JoueurDeux.Controls.Add(this.LBL_J2);
             this.GBX_JoueurDeux.Controls.Add(this.PB_J2_C8);
             this.GBX_JoueurDeux.Controls.Add(this.PB_J2_C7);
             this.GBX_JoueurDeux.Controls.Add(this.TBX_Score_J2);
@@ -300,6 +328,28 @@
             this.GBX_JoueurDeux.TabStop = false;
             this.GBX_JoueurDeux.Text = "Joueur 2";
             // 
+            // PB_J2_C8
+            // 
+            this.PB_J2_C8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C8.BackgroundImage")));
+            this.PB_J2_C8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PB_J2_C8.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C8.InitialImage")));
+            this.PB_J2_C8.Location = new System.Drawing.Point(489, 73);
+            this.PB_J2_C8.Name = "PB_J2_C8";
+            this.PB_J2_C8.Size = new System.Drawing.Size(63, 91);
+            this.PB_J2_C8.TabIndex = 18;
+            this.PB_J2_C8.TabStop = false;
+            // 
+            // PB_J2_C7
+            // 
+            this.PB_J2_C7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C7.BackgroundImage")));
+            this.PB_J2_C7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PB_J2_C7.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C7.InitialImage")));
+            this.PB_J2_C7.Location = new System.Drawing.Point(420, 73);
+            this.PB_J2_C7.Name = "PB_J2_C7";
+            this.PB_J2_C7.Size = new System.Drawing.Size(63, 91);
+            this.PB_J2_C7.TabIndex = 17;
+            this.PB_J2_C7.TabStop = false;
+            // 
             // TBX_Score_J2
             // 
             this.TBX_Score_J2.Enabled = false;
@@ -308,6 +358,7 @@
             this.TBX_Score_J2.Size = new System.Drawing.Size(100, 20);
             this.TBX_Score_J2.TabIndex = 16;
             this.TBX_Score_J2.Text = "0";
+            this.TBX_Score_J2.TextChanged += new System.EventHandler(this.TBX_Score_J2_TextChanged);
             // 
             // label2
             // 
@@ -340,6 +391,7 @@
             this.BTN_J2_Skip.TabIndex = 14;
             this.BTN_J2_Skip.Text = "Passer";
             this.BTN_J2_Skip.UseVisualStyleBackColor = true;
+            this.BTN_J2_Skip.Click += new System.EventHandler(this.BTN_J2_Skip_Click);
             // 
             // PB_J2_C6
             // 
@@ -418,7 +470,7 @@
             this.RTB_Ai1.ReadOnly = true;
             this.RTB_Ai1.Size = new System.Drawing.Size(296, 195);
             this.RTB_Ai1.TabIndex = 3;
-            this.RTB_Ai1.Text = ">Test de la console";
+            this.RTB_Ai1.Text = "";
             // 
             // RTB_Ai2
             // 
@@ -431,51 +483,25 @@
             this.RTB_Ai2.ReadOnly = true;
             this.RTB_Ai2.Size = new System.Drawing.Size(296, 195);
             this.RTB_Ai2.TabIndex = 4;
-            this.RTB_Ai2.Text = ">Test de la console";
+            this.RTB_Ai2.Text = "";
             // 
-            // PB_J1_C7
+            // LBL_J1
             // 
-            this.PB_J1_C7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C7.BackgroundImage")));
-            this.PB_J1_C7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PB_J1_C7.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C7.InitialImage")));
-            this.PB_J1_C7.Location = new System.Drawing.Point(420, 74);
-            this.PB_J1_C7.Name = "PB_J1_C7";
-            this.PB_J1_C7.Size = new System.Drawing.Size(63, 91);
-            this.PB_J1_C7.TabIndex = 18;
-            this.PB_J1_C7.TabStop = false;
+            this.LBL_J1.AutoSize = true;
+            this.LBL_J1.Location = new System.Drawing.Point(310, 50);
+            this.LBL_J1.Name = "LBL_J1";
+            this.LBL_J1.Size = new System.Drawing.Size(0, 13);
+            this.LBL_J1.TabIndex = 20;
+            this.LBL_J1.TextChanged += new System.EventHandler(this.LBL_J1_TextChanged);
             // 
-            // PB_J1_C8
+            // LBL_J2
             // 
-            this.PB_J1_C8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C8.BackgroundImage")));
-            this.PB_J1_C8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PB_J1_C8.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J1_C8.InitialImage")));
-            this.PB_J1_C8.Location = new System.Drawing.Point(489, 74);
-            this.PB_J1_C8.Name = "PB_J1_C8";
-            this.PB_J1_C8.Size = new System.Drawing.Size(63, 91);
-            this.PB_J1_C8.TabIndex = 19;
-            this.PB_J1_C8.TabStop = false;
-            // 
-            // PB_J2_C7
-            // 
-            this.PB_J2_C7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C7.BackgroundImage")));
-            this.PB_J2_C7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PB_J2_C7.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C7.InitialImage")));
-            this.PB_J2_C7.Location = new System.Drawing.Point(420, 73);
-            this.PB_J2_C7.Name = "PB_J2_C7";
-            this.PB_J2_C7.Size = new System.Drawing.Size(63, 91);
-            this.PB_J2_C7.TabIndex = 17;
-            this.PB_J2_C7.TabStop = false;
-            // 
-            // PB_J2_C8
-            // 
-            this.PB_J2_C8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C8.BackgroundImage")));
-            this.PB_J2_C8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PB_J2_C8.InitialImage = ((System.Drawing.Image)(resources.GetObject("PB_J2_C8.InitialImage")));
-            this.PB_J2_C8.Location = new System.Drawing.Point(489, 73);
-            this.PB_J2_C8.Name = "PB_J2_C8";
-            this.PB_J2_C8.Size = new System.Drawing.Size(63, 91);
-            this.PB_J2_C8.TabIndex = 18;
-            this.PB_J2_C8.TabStop = false;
+            this.LBL_J2.AutoSize = true;
+            this.LBL_J2.Location = new System.Drawing.Point(310, 49);
+            this.LBL_J2.Name = "LBL_J2";
+            this.LBL_J2.Size = new System.Drawing.Size(0, 13);
+            this.LBL_J2.TabIndex = 19;
+            this.LBL_J2.TextChanged += new System.EventHandler(this.LBL_J2_TextChanged);
             // 
             // Form1
             // 
@@ -497,6 +523,8 @@
             this.Text = "BlackJack";
             this.GBX_JoueurUn.ResumeLayout(false);
             this.GBX_JoueurUn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C1)).EndInit();
@@ -507,16 +535,14 @@
             this.menuStrip1.PerformLayout();
             this.GBX_JoueurDeux.ResumeLayout(false);
             this.GBX_JoueurDeux.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_J1_C8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_J2_C8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -559,6 +585,8 @@
       private System.Windows.Forms.PictureBox PB_J1_C7;
       private System.Windows.Forms.PictureBox PB_J2_C8;
       private System.Windows.Forms.PictureBox PB_J2_C7;
+      private System.Windows.Forms.Label LBL_J1;
+      private System.Windows.Forms.Label LBL_J2;
    }
 }
 
